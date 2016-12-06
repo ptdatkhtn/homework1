@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   def index
     #keyword = params[:q]
   #  @articles = Article.find_by_title(keyword) || []
+  sort_mode = params[:sort_mode]
   @articles = Article.search(params[:q])
 
   end
@@ -33,8 +34,7 @@ class ArticlesController < ApplicationController
     else
       reder 'edit'
     end
-  end
-  def article_params
     params.require(:article).permit(:title, :content)
+
   end
 end
